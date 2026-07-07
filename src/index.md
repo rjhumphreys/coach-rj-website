@@ -5,19 +5,24 @@ description: Strength and conditioning coach Raymond "RJ" Humphreys — building
 permalink: /
 ---
 
-<section class="hero">
-  <div class="hero-text">
-    <div class="eyebrow">Strength &amp; Conditioning Coach</div>
-    <h1>Helping everyone reach their peak.</h1>
-    <p class="lede">
-      Building winter sport athletes, college teams, and committed individuals
-      into stronger, more resilient versions of themselves. Process over
-      outcome. Consistency over intensity.
-    </p>
-    <a class="button" href="/contact/">Get in touch →</a>
+<section class="hero-fullwidth">
+  <div class="hero-carousel">
+    <img src="/assets/images/hero-skier-powder.jpg" alt="Skier in fresh powder with mountain peaks" class="active">
+    <img src="/assets/images/hero-sunset-cliff.jpg" alt="Golden hour cliff overlook" class="">
+    <img src="/assets/images/hero-alpine-peaks.jpg" alt="Alpine snow peaks" class="">
+    <img src="/assets/images/hero-sunset-vista.jpg" alt="Sunset mountain vista" class="">
   </div>
-  <div class="hero-photo">
-    <img src="/assets/images/hero-mountain-training.jpg" alt="Coach RJ in a mountain training environment">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <div class="eyebrow">Strength &amp; Conditioning Coach</div>
+      <h1>Helping everyone reach their peak.</h1>
+      <p class="lede">
+        Building winter sport athletes, college teams, and committed individuals
+        into stronger, more resilient versions of themselves. Process over
+        outcome. Consistency over intensity.
+      </p>
+      <a class="button" href="/contact/">Get in touch →</a>
+    </div>
   </div>
 </section>
 
