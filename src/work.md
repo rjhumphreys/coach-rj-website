@@ -8,7 +8,7 @@ permalink: /work/
 
 <div class="work-grid">
   {%- for item in collections.work -%}
-    {%- set isFeatured = item.data.featured -%}
+    {%- assign isFeatured = item.data.featured -%}
     <a class="work-card{% if isFeatured %} featured{% endif %}" href="{{ item.url }}">
       <div class="work-card-image">
         {% if item.data.image %}<img src="{{ item.data.image }}" alt="{{ item.data.title }}">{% endif %}
