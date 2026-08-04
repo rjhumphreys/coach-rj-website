@@ -217,11 +217,12 @@ main { min-height: 60vh; }
   .hero-photo { aspect-ratio: 4 / 3; order: 1; }
 }
 
-/* ====== Full-width hero ====== */
+/* ====== Full-width hero (fill viewport) ====== */
 .hero-fullwidth {
   position: relative;
-  /* increased overall height */
-  min-height: clamp(520px, 70vh, 760px);
+  /* fill the viewport */
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -231,12 +232,13 @@ main { min-height: 60vh; }
 .hero-carousel {
   position: absolute;
   inset: 0;
+  height: 100vh;
 }
 .hero-bg {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   border-radius: 0;
   opacity: 0;
@@ -250,8 +252,9 @@ main { min-height: 60vh; }
   z-index: 1;
   width: 100%;
   background: rgba(31, 29, 24, 0.55);
-  /* keep overlay matched to larger hero */
-  min-height: clamp(520px, 70vh, 760px);
+  /* match overlay to viewport */
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,8 +274,8 @@ main { min-height: 60vh; }
 }
 
 @media (max-width: 720px) {
-  .hero-fullwidth { min-height: 480px; }
-  .hero-overlay { min-height: 480px; }
+  .hero-fullwidth { min-height: 100vh; height: 100vh; }
+  .hero-overlay { min-height: 100vh; height: 100vh; }
   .hero-content { padding: 3rem 1.5rem; }
 }
 
