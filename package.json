@@ -2,23 +2,8 @@
   "name": "rj-website",
   "version": "1.0.0",
   "description": "Coach RJ Humphreys personal website",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy",
-    "serve": "eleventy --serve",
-    "clean": "rm -rf _site"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "private": "true",
-  "devDependencies": {
-    "@11ty/eleventy": "^3.1.5",
-    "@11ty/eleventy-img": "^6.0.4"
+    "build": "echo 'Static site — no build step needed'"
   }
 }

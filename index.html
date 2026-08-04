@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coach RJ — Helping Everyone Reach Their Peak</title>
+  <meta name="description" content="Strength and conditioning coach helping athletes and individuals reach their peak — process over outcome, consistency over intensity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/">Coach RJ</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/about/">About</a>
+        <a href="/work/">Work</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-fullwidth">
+      <div class="hero-carousel">
+        <img src="/assets/images/hero-skier-powder.jpg" alt="Skier in fresh powder with mountain peaks" class="hero-bg active">
+        <img src="/assets/images/hero-sunset-cliff.jpg" alt="Golden hour cliff overlook" class="hero-bg">
+        <img src="/assets/images/hero-alpine-peaks.jpg" alt="Alpine snow peaks" class="hero-bg">
+        <img src="/assets/images/hero-sunset-vista.jpg" alt="Sunset mountain vista" class="hero-bg">
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <div class="eyebrow">Strength &amp; Conditioning Coach</div>
+          <h1>Helping everyone reach their peak.</h1>
+          <p class="lede">
+            Building winter sport athletes, college teams, and committed individuals
+            into stronger, more resilient versions of themselves. Process over
+            outcome. Consistency over intensity.
+          </p>
+          <a class="button" href="/contact/">Get in touch →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tiles">
+      <a class="tile" href="/about/">
+        <div class="tile-eyebrow">About</div>
+        <h3>Coach RJ</h3>
+        <p>Background, education, and the philosophy behind the work.</p>
+        <span class="tile-arrow">Read more →</span>
+      </a>
+      <a class="tile" href="/work/">
+        <div class="tile-eyebrow">Work</div>
+        <h3>Projects &amp; writing</h3>
+        <p>Graduate research, case studies, and training write-ups.</p>
+        <span class="tile-arrow">See the work →</span>
+      </a>
+      <a class="tile" href="/contact/">
+        <div class="tile-eyebrow">Connect</div>
+        <h3>Get in touch</h3>
+        <p>For coaching inquiries, athletes, parents, and programs.</p>
+        <span class="tile-arrow">Reach out →</span>
+      </a>
+    </section>
+
+    <section class="pullquote">
+      <p>"Educate. Empower. Embrace."</p>
+      <cite>Coach RJ's working principles</cite>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-tagline">Educate · Empower · Embrace</div>
+      <div class="footer-links">
+        <a href="mailto:raymond.humphreys@my.colby-sawyer.edu">raymond.humphreys@my.colby-sawyer.edu</a>
+        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var imgs = document.querySelectorAll('.hero-carousel .hero-bg');
+      if (imgs.length < 2) return;
+      var i = 0;
+      setInterval(function() {
+        imgs[i].classList.remove('active');
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add('active');
+      }, 5000);
+    })();
+  </script>
+</body>
+</html>
