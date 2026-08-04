@@ -177,7 +177,8 @@ main { min-height: 60vh; }
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  min-height: clamp(420px, 60vh, 560px);
+  /* increased overall height */
+  min-height: clamp(520px, 70vh, 760px);
   border-bottom: 1px solid var(--stone-light);
 }
 .hero-text {
@@ -219,7 +220,8 @@ main { min-height: 60vh; }
 /* ====== Full-width hero ====== */
 .hero-fullwidth {
   position: relative;
-  min-height: clamp(420px, 60vh, 560px);
+  /* increased overall height */
+  min-height: clamp(520px, 70vh, 760px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,7 +250,8 @@ main { min-height: 60vh; }
   z-index: 1;
   width: 100%;
   background: rgba(31, 29, 24, 0.55);
-  min-height: clamp(420px, 60vh, 560px);
+  /* keep overlay matched to larger hero */
+  min-height: clamp(520px, 70vh, 760px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,8 +271,8 @@ main { min-height: 60vh; }
 }
 
 @media (max-width: 720px) {
-  .hero-fullwidth { min-height: 360px; }
-  .hero-overlay { min-height: 360px; }
+  .hero-fullwidth { min-height: 480px; }
+  .hero-overlay { min-height: 480px; }
   .hero-content { padding: 3rem 1.5rem; }
 }
 
