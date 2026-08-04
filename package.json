@@ -4,6 +4,6 @@
   "description": "Coach RJ Humphreys personal website",
   "private": true,
   "scripts": {
-    "build": "echo 'Static site — no build step needed'"
+    "build": "mkdir -p dist && cp -r index.html about contact work assets files dist/"
   }
 }
