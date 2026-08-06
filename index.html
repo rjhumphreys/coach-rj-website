@@ -85,18 +85,3 @@
       <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
     </div>
   </footer>
-
-  <script>
-    (function() {
-      var imgs = document.querySelectorAll('.hero-carousel .hero-bg');
-      if (imgs.length < 2) return;
-      var i = 0;
-      setInterval(function() {
-        imgs[i].classList.remove('active');
-        i = (i + 1) % imgs.length;
-        imgs[i].classList.add('active');
-      }, 3000);
-    })();
-  </script>
-</body>
-</html>
