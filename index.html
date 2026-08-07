@@ -16,6 +16,9 @@
     .hero-carousel .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 900ms ease-in-out; }
     .hero-carousel .hero-bg.active { opacity: 1; z-index: 1; }
 
+    /* Zoom-out variant: show the full image (letterboxed) so more of the scene is visible */
+    .hero-carousel .hero-bg.zoom-out { object-fit: contain; background: #000; }
+
     /* Overlay sits on top of images and centers content */
     .hero-overlay { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; }
     .hero-content { pointer-events: auto; color: #fff; text-align: center; padding: 2rem; max-width: 980px; }
@@ -46,9 +49,9 @@
       <div class="hero-carousel">
         <img src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="hero-bg active">
         <img src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="hero-bg">
-        <img src="/assets/images/Austria Powder.JPG" alt="Powder skiing in Austria" class="hero-bg">
-        <img src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg">
-        <img src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg">
+        <img src="/assets/images/Austria Powder.JPG" alt="Powder skiing in Austria" class="hero-bg zoom-out">
+        <img src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg zoom-out">
+        <img src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg zoom-out">
         <img src="/assets/images/Skiing-Center.jpg" alt="Skiing at the center" class="hero-bg">
       </div>
       <div class="hero-overlay">
