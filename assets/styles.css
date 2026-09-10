@@ -88,6 +88,82 @@ h3 { font-size: 1.25rem; line-height: 1.3; margin-top: 1.8em; margin-bottom: 0.4
 }
 .nav a:hover { color: var(--sage); }
 
+/* ====== Hamburger Menu ====== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger animation when nav-open */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile navigation styles */
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(247, 242, 231, 0.98);
+    border-bottom: 1px solid rgba(168, 157, 138, 0.25);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav.nav-open {
+    max-height: 300px;
+  }
+
+  .nav a {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(168, 157, 138, 0.1);
+    font-size: 1rem;
+    display: block;
+  }
+
+  .nav a:last-child {
+    border-bottom: none;
+  }
+
+  .nav a:hover {
+    background: rgba(74, 107, 94, 0.08);
+  }
+}
+
 /* ====== Footer ====== */
 .site-footer {
   margin-top: 6rem;
