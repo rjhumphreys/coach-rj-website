@@ -21,6 +21,8 @@
   <meta name="twitter:description" content="Training tips and coaching reflections.">
   <meta name="twitter:image" content="https://rjhumphreys.com/assets/images/hero-banner.coach.jpg">
   
+  <!-- Preload critical resources for faster page load -->
+  <link rel="preload" as="style" href="/assets/styles.css">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -73,6 +75,7 @@
   </footer>
 
   <script>
+    // Navigation toggle with early execution to prevent flashing
     (function () {
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.getElementById('main-nav');
@@ -90,6 +93,27 @@
         });
       });
     })();
+
+    // Lazy load blog cards as they come into view
+    if ('IntersectionObserver' in window) {
+      const cards = document.querySelectorAll('.post-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '50px' });
+      
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        observer.observe(card);
+      });
+    }
   </script>
 </body>
 </html>
