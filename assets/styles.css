@@ -612,3 +612,142 @@ main { min-height: 60vh; }
   font-weight: 500;
 }
 .contact-list a:hover { color: var(--sage); }
+
+/* ====== Blog ====== */
+.blog-list {
+  margin: 3rem 0;
+}
+
+.post-card {
+  background: var(--cream-soft);
+  border: 1px solid var(--stone-light);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--sage-light);
+  color: var(--ink);
+}
+
+.post-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0 0 0.3rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.post-card .excerpt {
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin: 0.8rem 0 0;
+  line-height: 1.5;
+}
+
+/* ====== Blog Subscribe Section ====== */
+.blog-subscribe {
+  background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage-deep) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin: 4rem 0 3rem;
+  text-align: center;
+}
+
+.subscribe-content h2 {
+  color: var(--cream);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.subscribe-content p {
+  color: rgba(247, 242, 231, 0.9);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subscribe-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75em 1rem;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: rgba(247, 242, 231, 0.95);
+  color: var(--ink);
+  transition: background 0.15s ease;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(31, 29, 24, 0.5);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  background: #fff;
+}
+
+.subscribe-form button {
+  flex-shrink: 0;
+  background: var(--cream);
+  color: var(--sage);
+  border: none;
+  padding: 0.75em 1.8em;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subscribe-form button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-note {
+  font-size: 0.78rem;
+  color: rgba(247, 242, 231, 0.75);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .blog-subscribe {
+    padding: 2rem 1.5rem;
+    margin: 3rem 0 2rem;
+  }
+  
+  .form-group {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  .subscribe-form input,
+  .subscribe-form button {
+    width: 100%;
+    min-width: unset;
+  }
+}
