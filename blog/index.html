@@ -11,7 +11,12 @@
   <header class="site-header">
     <div class="wrap nav-wrap">
       <a class="brand" href="/">Coach RJ</a>
-      <nav class="nav" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="main-nav" class="nav" aria-label="Main">
         <a href="/about/">About</a>
         <a href="/work/">Work</a>
         <a href="/blog/">Blog</a>
@@ -50,5 +55,25 @@
       <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
