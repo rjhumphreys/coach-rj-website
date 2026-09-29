@@ -524,19 +524,12 @@ main { min-height: 60vh; }
 
 /* ====== About photo ====== */
 .about-photo {
-  float: right;
-  width: 220px;
-  margin: 0 0 1.5rem 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
-}
-@media (max-width: 720px) {
-  .about-photo {
-    float: none;
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto 1.5rem;
-  }
+  display: block;
 }
 
 /* ====== About blocks ====== */
