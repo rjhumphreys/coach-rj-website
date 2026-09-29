@@ -744,3 +744,42 @@ main { min-height: 60vh; }
     min-width: unset;
   }
 }
+
+/* ====== Contact Form Section ====== */
+.contact-form-section {
+  background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage-deep) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.contact-form-content h2 {
+  color: var(--cream);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.contact-form-content p {
+  color: rgba(247, 242, 231, 0.9);
+  font-size: 1rem;
+  max-width: 40em;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-form-content .button {
+  background: var(--cream);
+  color: var(--sage);
+}
+
+.contact-form-content .button:hover {
+  background: #fff;
+  color: var(--sage-deep);
+}
+
+@media (max-width: 720px) {
+  .contact-form-section {
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+  }
+}
