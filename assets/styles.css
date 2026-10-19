@@ -744,3 +744,70 @@ main { min-height: 60vh; }
     min-width: unset;
   }
 }
+
+/* ====== Services Page (namespaced, conflict-safe) ====== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.services-card {
+  background: var(--cream-soft);
+  border: 1px solid rgba(168, 157, 138, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.services-card h3 {
+  margin-top: 0.4rem;
+}
+
+.services-card ul {
+  margin-top: 0.75rem;
+}
+
+.services-meta {
+  font-size: 0.9rem;
+  color: var(--sage-deep);
+}
+
+.services-card-featured {
+  border-color: var(--sage-light);
+}
+
+.services-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(74, 107, 94, 0.12);
+  color: var(--sage-deep);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-process ol {
+  margin-top: 0.5rem;
+}
+
+.services-faq h3 {
+  margin-top: 1rem;
+}
+
+.services-cta {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(168, 157, 138, 0.35);
+  background: var(--cream-soft);
+}
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
