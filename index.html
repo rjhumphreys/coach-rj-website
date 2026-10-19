@@ -40,6 +40,7 @@
       <nav id="main-nav" class="nav" aria-label="Main">
         <a href="/about/">About</a>
         <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
         <a href="/blog/">Blog</a>
         <a href="/contact/">Contact</a>
       </nav>
@@ -49,97 +50,3 @@
   <main>
     <section class="hero-fullwidth">
       <div class="hero-carousel">
-    <img srcset="/assets/images/Gym-Aura-sm.JPG 640w, /assets/images/Gym-Aura.JPG 1920w" sizes="100vw" src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="hero-bg active" loading="lazy">
-    <img srcset="/assets/images/Presi-Sunrise-sm.JPG 640w, /assets/images/Presi-Sunrise.JPG 1920w" sizes="100vw" src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="hero-bg" loading="lazy">
-    <img srcset="/assets/images/Luke-Climb-sm.JPG 640w, /assets/images/Luke-Climb.JPG 1920w" sizes="100vw" src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg" loading="lazy">
-    <img srcset="/assets/images/Pinnacle-Traverse-sm.JPG 640w, /assets/images/Pinnacle-Traverse.JPG 1920w" sizes="100vw" src="/assets/images/Pinnacle-Traverse.JPG" alt="Pinnacle traverse" class="hero-bg" loading="lazy">
-    <img srcset="/assets/images/hero-banner-sm.coach.jpg 640w, /assets/images/hero-banner.coach.jpg 1920w" sizes="100vw" src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="hero-bg" loading="lazy">
-    <img srcset="/assets/images/Spring-Tucks-sm.JPG 640w, /assets/images/Spring-Tucks.JPG 1920w" sizes="100vw" src="/assets/images/Spring-Tucks.JPG" alt="Spring tucks" class="hero-bg" loading="lazy">
-    <img srcset="/assets/images/Tucks-Spring-sm.jpg 640w, /assets/images/Tucks-Spring.jpg 1920w" sizes="100vw" src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg" loading="lazy">
-</div>
-      <div class="hero-overlay">
-        <div class="hero-content">
-          <div class="eyebrow">Strength &amp; Conditioning Coach</div>
-          <h1>Helping Everyone Reach Their Peak</h1>
-          <p class="lede">
-            Building winter sport athletes, college teams, and committed individuals
-            into stronger, more resilient versions of themselves.
-          </p>
-          <a class="button" href="/contact/">Book a Consultation →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="tiles">
-      <a class="tile" href="/about/">
-        <div class="tile-eyebrow">About</div>
-        <h3>Coach RJ</h3>
-        <p>Background, education, and the philosophy behind the work.</p>
-        <span class="tile-arrow">Read more →</span>
-      </a>
-      <a class="tile" href="/work/">
-        <div class="tile-eyebrow">Work</div>
-        <h3>Projects &amp; Writing</h3>
-        <p>Graduate research, case studies, and training write-ups.</p>
-        <span class="tile-arrow">See the work →</span>
-      </a>
-      <a class="tile" href="/contact/">
-        <div class="tile-eyebrow">Connect</div>
-        <h3>Get In Touch</h3>
-        <p>For coaching inquiries, athletes, parents, and programs.</p>
-        <span class="tile-arrow">Reach out →</span>
-      </a>
-    </section>
-
-    <section class="pullquote">
-      <p>"Educate. Empower. Embrace."</p>
-      <cite>Coach RJ's working principles</cite>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-wrap">
-      <div class="footer-tagline">Educate · Empower · Embrace</div>
-      <div class="footer-links">
-        <a href="mailto:raymond.humphreys@my.colby-sawyer.edu">raymond.humphreys@my.colby-sawyer.edu</a>
-        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
-      </div>
-      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
-    </div>
-  </footer>
-
-  <script>
-    // Simple carousel: rotate .hero-bg.active every 3 seconds with fade transition
-    (function () {
-      const slides = Array.from(document.querySelectorAll('.hero-bg'));
-      if (!slides.length) return;
-      let i = slides.findIndex(s => s.classList.contains('active'));
-      if (i < 0) i = 0, slides[0].classList.add('active');
-
-      setInterval(() => {
-        slides[i].classList.remove('active');
-        i = (i + 1) % slides.length;
-        slides[i].classList.add('active');
-      }, 3000);
-    })();
-
-    (function () {
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('main-nav');
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('nav-open');
-        toggle.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      nav.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('nav-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-  </script>
-</body>
-</html>
