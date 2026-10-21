@@ -877,3 +877,26 @@ main { min-height: 60vh; }
 .response-frame {
   display: none;
 }
+
+/* Clickable service cards: the heading link stretches over the whole card */
+.card-link {
+  position: relative;
+}
+
+.card-link-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-link-anchor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--radius-lg);
+}
+
+.card-link:hover,
+.card-link:focus-within {
+  border-color: var(--sage);
+}
