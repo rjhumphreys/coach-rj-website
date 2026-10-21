@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Training Questionnaire — Coach RJ</title>
+  <meta name="description" content="Tell Coach RJ about your training history, goals, and contact information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/">Coach RJ</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="main-nav" class="nav" aria-label="Main">
+        <a href="/about/">About</a>
+        <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="page">
+      <header class="page-header">
+        <div class="eyebrow">Get Started</div>
+        <h1>Training History, Goals, and Contact Form</h1>
+        <p class="subtitle">A few details now will help us have a productive consultation.</p>
+      </header>
+
+      <form class="questionnaire" action="https://docs.google.com/forms/d/e/1FAIpQLSd4LkyW8R4iQffhsyrVv7EYkd3t7DtqRsiRI3J8J8cbBvV6LQ/formResponse" method="post" target="questionnaire-response">
+        <fieldset>
+          <legend>Contact Information</legend>
+          <p class="field-note">Please provide your name and contact information.</p>
+
+          <label>Full Name <span aria-hidden="true">*</span>
+            <input type="text" name="entry.612508230" autocomplete="name" required>
+          </label>
+
+          <label>Age <span aria-hidden="true">*</span>
+            <input type="number" name="entry.497537255" min="13" max="120" inputmode="numeric" required>
+          </label>
+
+          <label>Email <span aria-hidden="true">*</span>
+            <input type="email" name="entry.823658939" autocomplete="email" required>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Training History Profile</legend>
+          <p class="field-note">Your current and previous training help shape the right plan.</p>
+
+          <label>Current Training Status <span aria-hidden="true">*</span>
+            <select name="entry.1714331650" required>
+              <option value="">Select one</option>
+              <option>Training 5 to 6 times a week</option>
+              <option>Training 3 to 4 times a week</option>
+              <option>Training 1 to 2 times a week</option>
+              <option>No Training</option>
+            </select>
+          </label>
+
+          <fieldset class="choice-group required-group" data-error="Choose at least one training-history option.">
+            <legend>Sport and Training History <span aria-hidden="true">*</span></legend>
+            <label><input type="checkbox" name="entry.417803878" value="Pro or Semi-Pro Athlete"> Pro or Semi-Pro Athlete</label>
+            <label><input type="checkbox" name="entry.417803878" value="College Athlete - DI, II or III"> College Athlete — DI, II, or III</label>
+            <label><input type="checkbox" name="entry.417803878" value="High School Athlete"> High School Athlete</label>
+            <label><input type="checkbox" name="entry.417803878" value="Recreation Athlete"> Recreational Athlete</label>
+            <label><input type="checkbox" name="entry.417803878" value="Weight Room Training Experience"> Weight Room Training Experience</label>
+            <label><input type="checkbox" name="entry.417803878" value="No Weight Room Training Experience"> No Weight Room Training Experience</label>
+            <label><input type="checkbox" name="entry.417803878" value="No Previous Training History"> No Previous Training History</label>
+          </fieldset>
+
+          <label>How many years have you been training? <span aria-hidden="true">*</span>
+            <select name="entry.411384204" required>
+              <option value="">Select one</option>
+              <option>10+ years</option>
+              <option>9 years</option>
+              <option>8 years</option>
+              <option>7 years</option>
+              <option>6 years</option>
+              <option>5 years</option>
+              <option>4 years</option>
+              <option>3 years</option>
+              <option>2 years</option>
+              <option>1 year</option>
+              <option>None</option>
+            </select>
+          </label>
+
+          <label>Current Sport(s) and/or Activities <span aria-hidden="true">*</span>
+            <textarea name="entry.516306466" rows="4" required></textarea>
+          </label>
+
+          <fieldset class="choice-group required-group" data-error="Choose at least one training goal.">
+            <legend>Training Goals <span aria-hidden="true">*</span></legend>
+            <label><input type="checkbox" name="entry.124131648" value="Strength and Power"> Strength and Power</label>
+            <label><input type="checkbox" name="entry.124131648" value="Hypertrophy / Muscle Mass"> Hypertrophy / Muscle Mass</label>
+            <label><input type="checkbox" name="entry.124131648" value="Endurance"> Endurance</label>
+            <label><input type="checkbox" name="entry.124131648" value="Speed, Acceleration, Agility"> Speed, Acceleration, Agility</label>
+            <label><input type="checkbox" name="entry.124131648" value="Sport Performance and Preparation"> Sport Performance and Preparation</label>
+            <label><input type="checkbox" name="entry.124131648" value="Return to Sport / Rehab"> Return to Sport / Rehab</label>
+            <label><input type="checkbox" name="entry.124131648" value="General Fitness"> General Fitness</label>
+            <label><input type="checkbox" name="entry.124131648" value="Training Organization and Periodization"> Training Organization and Periodization</label>
+          </fieldset>
+        </fieldset>
+
+        <fieldset>
+          <legend>Injury History</legend>
+          <p class="field-note">Please provide an accurate injury and medical history.</p>
+
+          <fieldset class="choice-group">
+            <legend>Do you have any acute or chronic injuries? <span aria-hidden="true">*</span></legend>
+            <label><input type="radio" name="entry.539487986" value="Yes" required> Yes</label>
+            <label><input type="radio" name="entry.539487986" value="No"> No</label>
+          </fieldset>
+
+          <label>If yes, please list injuries below.
+            <textarea name="entry.1273178859" rows="4"></textarea>
+          </label>
+
+          <fieldset class="choice-group">
+            <legend>Do you have any medical conditions that would limit your physical training plan? <span aria-hidden="true">*</span></legend>
+            <label><input type="radio" name="entry.9412993" value="Yes" required> Yes</label>
+            <label><input type="radio" name="entry.9412993" value="No"> No</label>
+          </fieldset>
+
+          <label>If yes, please list medical conditions below.
+            <textarea name="entry.856734166" rows="4"></textarea>
+          </label>
+        </fieldset>
+
+        <p class="privacy-note">Your answers are submitted securely to Coach RJ's existing Google Forms account.</p>
+        <button class="button" type="submit">Submit Questionnaire</button>
+        <p class="form-status" role="status" tabindex="-1" hidden>Thanks—your questionnaire has been submitted. <a href="/contact/">Book your consultation</a>.</p>
+      </form>
+      <iframe class="response-frame" name="questionnaire-response" title="Questionnaire submission response"></iframe>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-tagline">Educate · Empower · Embrace</div>
+      <div class="footer-links">
+        <a href="mailto:coachrj.training@gmail.com">coachrj.training@gmail.com</a>
+        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.querySelector('.questionnaire');
+    const frame = document.querySelector('.response-frame');
+    const status = document.querySelector('.form-status');
+    let submitted = false;
+
+    form.addEventListener('submit', (event) => {
+      const incompleteGroup = [...form.querySelectorAll('.required-group')].find(
+        (group) => !group.querySelector('input:checked')
+      );
+      if (incompleteGroup) {
+        event.preventDefault();
+        alert(incompleteGroup.dataset.error);
+        incompleteGroup.querySelector('input').focus();
+        return;
+      }
+      submitted = true;
+    });
+
+    frame.addEventListener('load', () => {
+      if (!submitted) return;
+      form.reset();
+      status.hidden = false;
+      status.focus();
+    });
+  </script>
+  <script src="/assets/navigation.js"></script>
+</body>
+</html>

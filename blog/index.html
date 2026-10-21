@@ -43,3 +43,101 @@
       </nav>
     </div>
   </header>
+
+  <main>
+    <div class="wrap-narrow page">
+      <header class="page-header">
+        <div class="eyebrow">Blog</div>
+        <h1>From The Training Floor</h1>
+        <p class="subtitle">Short notes, programming tips, and coaching reflections.</p>
+      </header>
+
+      <!-- Subscription Section -->
+      <section class="blog-subscribe">
+        <div class="subscribe-content">
+          <h2>Never Miss an Article</h2>
+          <p>Get coaching insights delivered straight to your inbox. No spam, just practical training wisdom.</p>
+          <form class="subscribe-form" action="#" method="post">
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
+              <button type="submit" class="button">Subscribe</button>
+            </div>
+            <p class="form-note">We'll never share your email. Unsubscribe anytime.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="blog-list">
+        <article class="post-card">
+          <a href="/blog/recovery-forgotten-pillar/">
+            <h3>Recovery: The Forgotten Pillar of Training</h3>
+            <div class="meta">September 10, 2026 · Training</div>
+            <p class="excerpt">Why recovery is just as important as your training sessions. A practical guide to optimizing rest, sleep, and nutrition for better results.</p>
+          </a>
+        </article>
+
+        <article class="post-card">
+          <a href="/blog/sample-post/">
+            <h3>Sample post: Building consistent strength</h3>
+            <div class="meta">August 5, 2026 · Training</div>
+            <p class="excerpt">Consistency is the most underrated training variable. Here's a short framework for building reliable progress without chasing maximal intensity every session.</p>
+          </a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-tagline">Educate · Empower · Embrace</div>
+      <div class="footer-links">
+        <a href="mailto:raymond.humphreys@my.colby-sawyer.edu">raymond.humphreys@my.colby-sawyer.edu</a>
+        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation toggle with early execution to prevent flashing
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    // Lazy load blog cards as they come into view
+    if ('IntersectionObserver' in window) {
+      const cards = document.querySelectorAll('.post-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '50px' });
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        observer.observe(card);
+      });
+    }
+  </script>
+</body>
+</html>
