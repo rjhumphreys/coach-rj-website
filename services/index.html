@@ -9,6 +9,157 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+:root{
+  --sv-bg:#070b14;
+  --sv-surface:rgba(255,255,255,.06);
+  --sv-text:#e5e7eb;
+  --sv-muted:#94a3b8;
+  --sv-brand:#22d3ee;
+  --sv-brand2:#a78bfa;
+  --sv-border:rgba(255,255,255,.14);
+  --sv-radius:18px;
+  --sv-shadow:0 20px 60px rgba(2,6,23,.45);
+}
+
+.services-page{
+  color:var(--sv-text);
+  background:
+    radial-gradient(1000px 420px at 10% -10%, rgba(34,211,238,.18), transparent 60%),
+    radial-gradient(800px 420px at 100% 0%, rgba(167,139,250,.15), transparent 55%),
+    linear-gradient(180deg, #020617 0%, #0b1220 45%, #060b16 100%);
+  padding-bottom:2rem;
+}
+
+.services-page .container{ width:min(100% - 2rem, 1120px); margin-inline:auto; }
+.services-page .section{ padding:1.2rem 0 2rem; }
+
+.services-page .services-hero{
+  padding:clamp(2.5rem, 6vw, 5rem) 0 2rem;
+  display:grid; grid-template-columns:1.15fr .85fr; gap:2rem; align-items:center;
+}
+.services-page .services-chip{
+  display:inline-block; font-size:.82rem; font-weight:700;
+  color:#a5f3fc; background:rgba(34,211,238,.14);
+  border:1px solid rgba(34,211,238,.32); border-radius:999px;
+  padding:.3rem .75rem;
+}
+.services-page .services-hero h1{ font-size:clamp(2rem,4vw,3.4rem); line-height:1.1; margin:.8rem 0; }
+.services-page .services-hero p{ color:var(--sv-muted); max-width:62ch; }
+
+.services-page .services-hero__actions{ display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.2rem; }
+
+.services-page .btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:12px; padding:.78rem 1rem; font-weight:700; border:1px solid transparent;
+}
+.services-page .btn-primary{
+  color:#03222b;
+  background:linear-gradient(90deg,var(--sv-brand),#67e8f9);
+  box-shadow:0 10px 24px rgba(34,211,238,.28);
+}
+.services-page .btn-ghost{
+  color:#cbd5e1; background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.16);
+}
+
+.services-page .services-hero__card{
+  background:linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.05));
+  border:1px solid var(--sv-border);
+  border-radius:var(--sv-radius);
+  padding:1rem;
+  box-shadow:var(--sv-shadow);
+}
+.services-page .services-hero__card img{ width:100%; border-radius:12px; display:block; }
+
+.services-page .services-stats{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-top:.75rem;
+}
+.services-page .services-stats div{
+  background:rgba(15,23,42,.65); border:1px solid rgba(148,163,184,.22);
+  border-radius:12px; padding:.65rem; text-align:center;
+}
+.services-page .services-stats strong{ display:block; }
+.services-page .services-stats span{ font-size:.78rem; color:var(--sv-muted); }
+
+.services-page .services-sticky{ position:sticky; top:.75rem; z-index:30; margin-bottom:.75rem; }
+.services-page .services-sticky__nav{
+  display:flex; flex-wrap:wrap; gap:.55rem;
+  background:rgba(2,6,23,.75); backdrop-filter:blur(8px);
+  border:1px solid var(--sv-border); border-radius:14px; padding:.55rem;
+}
+.services-page .services-sticky__nav a{
+  color:#cbd5e1; font-size:.86rem; border-radius:9px; padding:.4rem .65rem;
+}
+.services-page .services-sticky__nav a:hover{
+  background:rgba(34,211,238,.12);
+  color:#cffafe;
+}
+
+.services-page .section-head{ margin-bottom:1rem; }
+.services-page .section-head h2{ margin:0 0 .25rem; font-size:clamp(1.2rem,2.3vw,2rem); }
+.services-page .section-head p{ margin:0; color:var(--sv-muted); }
+
+.services-page .services-grid{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem;
+}
+.services-page .service-card{
+  border:1px solid var(--sv-border);
+  border-radius:var(--sv-radius);
+  padding:1rem;
+  background:linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+  box-shadow:var(--sv-shadow);
+}
+.services-page .service-icon{
+  width:42px; height:42px; border-radius:12px;
+  display:grid; place-items:center;
+  background:rgba(34,211,238,.14);
+  border:1px solid rgba(34,211,238,.38);
+  margin-bottom:.7rem;
+}
+.services-page .service-card p{ color:var(--sv-muted); }
+
+.services-page .layer-panel{
+  border:1px solid rgba(148,163,184,.25);
+  border-radius:16px; overflow:hidden; background:rgba(15,23,42,.55);
+}
+.services-page .layer-panel details{ border-bottom:1px solid rgba(148,163,184,.2); }
+.services-page .layer-panel details:last-child{ border-bottom:none; }
+.services-page .layer-panel summary{ cursor:pointer; padding:.95rem 1rem; font-weight:600; }
+.services-page .layer-panel p{ margin:0; color:var(--sv-muted); padding:0 1rem 1rem; }
+
+.services-page .logo-grid{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:.6rem;
+}
+.services-page .logo-grid div{
+  border:1px solid rgba(148,163,184,.25);
+  border-radius:12px;
+  background:rgba(255,255,255,.03);
+  text-align:center;
+  padding:.7rem;
+  color:#cbd5e1;
+  font-size:.86rem;
+}
+
+.services-page .services-cta{
+  border:1px solid rgba(52,211,153,.35);
+  border-radius:18px;
+  padding:1.1rem;
+  background:radial-gradient(circle at 90% 10%, rgba(52,211,153,.2), transparent 35%), rgba(16,185,129,.06);
+  display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;
+}
+.services-page .services-cta p{ margin:0; color:#bbf7d0; }
+
+@media (max-width:980px){
+  .services-page .services-hero{ grid-template-columns:1fr; }
+  .services-page .services-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .services-page .logo-grid{ grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:680px){
+  .services-page .services-grid{ grid-template-columns:1fr; }
+  .services-page .services-stats{ grid-template-columns:1fr 1fr; }
+  .services-page .logo-grid{ grid-template-columns:repeat(2,1fr); }
+}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -29,76 +180,124 @@
     </div>
   </header>
 
-  <main>
-    <article class="page">
-      <header class="page-header">
-        <div class="eyebrow">Coaching Services</div>
-        <h1>Training Built Around You</h1>
-        <p class="subtitle">Choose the level of support that fits your goals, experience, and schedule.</p>
-      </header>
+  <main class="services-page">
 
-      <div class="prose">
-        <p>Good programming starts with context, getting to know your sport, training history, available equipment, schedule, and goals all shape the plan. Every coaching option begins with a free 60 minute consultation, regardless if you choose Coach RJ Training or not, so we can discuss the right level of support.</p>
-        <p>All training programs are built and completed on the TeamBuildr platform where you get acces to:</p>
-              <li>Training Logging and Monitoring</li>
-              <li>PR Recording and Tracking<li>
-              <li>Complete Demo Video Examples<li>
-              <li>Media and Journal Uploading<li>
-              <li>Two Way Coach to Athlete Communication</li>
-
-        <div class="card-grid">
-          <section class="card">
-            <h2>Premium Coaching</h2>
-            <p>For a specific goal oriented athlete or person who wants a clear, individualized plan, culminating with a competition season, race or trip. This coaching service is built for those who have a big goals that requires an long term annual plan with consistent monitoring. The Premium Coaching service is built for those who are training for individual sports, mountain athletes planning their next big trip, or competitive athletes preparing for the next seaosn or people who need more indivualized coaching.</p>
-            <ul>
-              <li>Full TeamBuildr access</li>
-              <li>Initial consultation, needs analysis and annual planning</li>
-              <li>Personalized training program</li>
-              <li>Individual exercise selection with progression and regression</li>
-              <li>Lifting technigue</li>
-              <li>Scheduled weekly check-ins to help you stay accountable and provide additional coaching for lifting technique, lifstyle changes and progress monitoring</li> 
-              <li>Priced at $375 a month</li> 
-            </ul>
-          </section>
-
-          <section class="card">
-            <h2>Base Coaching</h2>
-            <p>For athletes or people who are looking for quality programming to fit their lifstlye and goals. This coaching service is best for people who are training for multiple goals or sports, general health and wellness, or advanced training age individuals who need a structured program with limited additional coaching.</p>
-            <ul>
-              <li>Full TeamBuildr access</li>
-              <li>Initial consultation and program overview</li>
-              <li>Technique and training feedback via TeamBuildr</li>
-              <li>A</li>
-            </ul>
-          </section>
-
-          <section class="card">
-            <h2>Teams and Organizations</h2>
-            <p>F.</p>
-            <ul>
-              <li>Team needs analysis</li>
-              <li>Seasonal or year-round programming</li>
-              <li>Testing and monitoring plans</li>
-              <li>Coach education and consultation</li>
-            </ul>
-          </section>
-        </div>
-
-        <h2>How It Works</h2>
-        <ol>
-          <li>Complete the training questionnaire.</li>
-          <li>Book a free consultation to discuss your needs.</li>
-          <li>Choose the coaching option that fits best.</li>
-          <li>Start training with a plan built for your goals.</li>
-        </ol>
-
-        <div class="callout">
-          <h2>Ready to get started?</h2>
-          <p>Tell me about your training history and goals. We will use your answers to make the first conversation productive.</p>
-          <p><a class="button" href="/questionnaire/">Complete the Questionnaire →</a></p>
+    <section class="services-hero container" id="top">
+      <div class="services-hero__content">
+        <span class="services-chip">⚡ High-Impact Coaching Services</span>
+        <h1>Services built to help you perform at your next level.</h1>
+        <p>
+          From mindset and accountability to performance strategy, each program is structured
+          with clear milestones, practical tools, and measurable outcomes.
+        </p>
+        <div class="services-hero__actions">
+          <a class="btn btn-primary" href="/contact/">Book a Discovery Call</a>
+          <a class="btn btn-ghost" href="#service-cards">Explore Services</a>
         </div>
       </div>
-    </article>
+
+      <aside class="services-hero__card">
+        <img src="/assets/images/services-hero.jpg" alt="Coach RJ in a session" />
+        <div class="services-stats">
+          <div><strong>1:1</strong><span>Private Coaching</span></div>
+          <div><strong>Group</strong><span>Workshops</span></div>
+          <div><strong>Custom</strong><span>Programs</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="services-sticky container">
+      <nav class="services-sticky__nav">
+        <a href="#service-cards">Core Services</a>
+        <a href="#deep-dive">How It Works</a>
+        <a href="#partners">Partners & Platforms</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book">Book</a>
+      </nav>
+    </div>
+
+    <section id="service-cards" class="container section">
+      <div class="section-head">
+        <h2>Core Services</h2>
+        <p>Choose your starting point. Every package can scale based on your goals.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>1:1 Performance Coaching</h3>
+          <p>Personalized sessions focused on mindset, consistency, and tactical execution.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🧠</div>
+          <h3>Mental Conditioning</h3>
+          <p>Build resilience under pressure, sharpen focus, and improve recovery habits.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Team & Group Programs</h3>
+          <p>High-energy workshops and practical frameworks for teams and communities.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="deep-dive" class="container section">
+      <div class="section-head">
+        <h2>Layered Coaching Experience</h2>
+        <p>Quick to start, deep enough to transform.</p>
+      </div>
+
+      <div class="layer-panel">
+        <details open>
+          <summary>Layer 1 — Foundation & Assessment</summary>
+          <p>Baseline, blockers, outcomes, and a practical 30-day roadmap.</p>
+        </details>
+        <details>
+          <summary>Layer 2 — Execution Systems</summary>
+          <p>Weekly structure, routines, and accountability loops.</p>
+        </details>
+        <details>
+          <summary>Layer 3 — Performance Expansion</summary>
+          <p>Confidence under pressure, leadership presence, decision speed.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="partners" class="container section">
+      <div class="section-head">
+        <h2>Partners & Platforms</h2>
+        <p>Swap these placeholders for logo assets.</p>
+      </div>
+      <div class="logo-grid">
+        <div>Logo 1</div><div>Logo 2</div><div>Logo 3</div>
+        <div>Logo 4</div><div>Logo 5</div><div>Logo 6</div>
+      </div>
+    </section>
+
+    <section id="faq" class="container section">
+      <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Answer common objections directly to improve conversions.</p>
+      </div>
+      <div class="layer-panel">
+        <details><summary>How long before I see results?</summary><p>Most clients see momentum in 2–4 weeks.</p></details>
+        <details><summary>Do you offer custom plans?</summary><p>Yes — tailored by goals and schedule.</p></details>
+        <details><summary>Are remote sessions available?</summary><p>Yes. Virtual coaching is available worldwide.</p></details>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="services-cta" id="book">
+        <div>
+          <h3>Ready to elevate your performance?</h3>
+          <p>Book a strategy call and map your first 30 days.</p>
+        </div>
+        <a class="btn btn-primary" href="/contact/">Start Now</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
