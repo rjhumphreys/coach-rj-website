@@ -769,6 +769,27 @@ main { min-height: 60vh; }
   font-size: 0.95rem;
 }
 
+.card-link {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-link:hover,
+.card-link:focus-within {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-link-anchor { color: inherit; text-decoration: none; }
+
+.card-link-anchor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card-more { font-weight: 600; color: var(--sage); }
+
 .callout {
   margin-top: 3rem;
   padding: 1.5rem;
