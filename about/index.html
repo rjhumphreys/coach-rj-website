@@ -31,6 +31,16 @@
 
   <main>
     <article class="page">
+      <section class="about-carousel" aria-label="Photo carousel">
+        <img src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="about-slide active">
+        <img src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="about-slide" loading="lazy">
+        <img src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="about-slide" loading="lazy">
+        <img src="/assets/images/Pinnacle-Traverse.JPG" alt="Pinnacle traverse" class="about-slide" loading="lazy">
+        <img src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="about-slide" loading="lazy">
+        <img src="/assets/images/Spring-Tucks.JPG" alt="Spring tucks" class="about-slide" loading="lazy">
+        <img src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="about-slide" loading="lazy">
+      </section>
+
       <!-- Hero-style introduction (large banner + centered lead) -->
       <section class="hero-article">
         <div class="hero-article-overlay"></div>
@@ -121,6 +131,20 @@
   </footer>
 
   <script>
+    // Same carousel behavior as the intro page: rotate .about-slide.active every 3 seconds with fade transition
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.about-slide'));
+      if (!slides.length) return;
+      let i = slides.findIndex(s => s.classList.contains('active'));
+      if (i < 0) i = 0, slides[0].classList.add('active');
+
+      setInterval(() => {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+      }, 3000);
+    })();
+
     (function () {
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.getElementById('main-nav');
