@@ -348,6 +348,13 @@ main { min-height: 60vh; }
   margin-bottom: 1.75rem;
   line-height: 1.55;
 }
+.hero-content .hero-subtitle-strong {
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+}
 
 @media (max-width: 720px) {
   .hero-fullwidth { min-height: 100vh; height: 100vh; }
