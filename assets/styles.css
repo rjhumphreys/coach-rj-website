@@ -877,3 +877,25 @@ main { min-height: 60vh; }
 .response-frame {
   display: none;
 }
+
+.about-carousel {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 260px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--stone-light);
+}
+.about-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+.about-slide.active {
+  opacity: 1;
+}
