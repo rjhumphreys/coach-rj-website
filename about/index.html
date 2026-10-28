@@ -9,6 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* Full-screen carousel visuals: fade between background images and center overlay content */
+    .hero-fullwidth { position: relative; height: 100vh; min-height: 100vh; overflow: hidden; }
+    .hero-carousel { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-carousel .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 900ms ease-in-out; }
+    .hero-carousel .hero-bg.active { opacity: 1; z-index: 1; }
+
+    /* Overlay sits on top of images and centers content */
+    .hero-overlay { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .hero-content { pointer-events: auto; color: #fff; text-align: center; padding: 2rem; max-width: 980px; }
+
+    /* Optional: subtle gradient to improve text contrast */
+    .hero-overlay::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.35)); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; }
+
+    /* Make sure header sits above the hero when fixed (if needed) */
+    .site-header { position: relative; z-index: 3; }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -30,17 +48,27 @@
   </header>
 
   <main>
-    <article class="page">
-      <!-- Hero-style introduction (large banner + centered lead) -->
-      <section class="hero-article">
-        <div class="hero-article-overlay"></div>
-        <div class="hero-article-content">
-        
-      <div class="eyebrow">About</div>
+    <!-- Hero-style introduction: full-width carousel, same as home page -->
+    <section class="hero-fullwidth">
+      <div class="hero-carousel">
+    <img srcset="/assets/images/Gym-Aura-sm.JPG 640w, /assets/images/Gym-Aura.JPG 1920w" sizes="100vw" src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="hero-bg active" loading="lazy">
+    <img srcset="/assets/images/Presi-Sunrise-sm.JPG 640w, /assets/images/Presi-Sunrise.JPG 1920w" sizes="100vw" src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Luke-Climb-sm.JPG 640w, /assets/images/Luke-Climb.JPG 1920w" sizes="100vw" src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Pinnacle-Traverse-sm.JPG 640w, /assets/images/Pinnacle-Traverse.JPG 1920w" sizes="100vw" src="/assets/images/Pinnacle-Traverse.JPG" alt="Pinnacle traverse" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/hero-banner-sm.coach.jpg 640w, /assets/images/hero-banner.coach.jpg 1920w" sizes="100vw" src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Spring-Tucks-sm.JPG 640w, /assets/images/Spring-Tucks.JPG 1920w" sizes="100vw" src="/assets/images/Spring-Tucks.JPG" alt="Spring tucks" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Tucks-Spring-sm.jpg 640w, /assets/images/Tucks-Spring.jpg 1920w" sizes="100vw" src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg" loading="lazy">
+</div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <div class="eyebrow">About</div>
           <h1>About Coach RJ</h1>
           <p class="subtitle">Strength coach, lifelong learner, and believer in process over ego.</p>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <article class="page">
 
       <div class="prose">
         <p>Coach RJ holds a graduate degree in Exercise Science with a concentration in Strength and Conditioning from Colby-Sawyer College, where he also worked as an assistant strength and conditioning coach. He is passionate about building resilient, courageous athletes through a process-driven approach.</p>
@@ -105,7 +133,8 @@
             <p>Worked in several personal training settings, from private gyms serving athletes and adult clients to membership-driven gyms with a broad range of clientele.</p>
           </div>
         </div>
-
+      </div>
+    </article>
   </main>
 
   <footer class="site-footer">
@@ -120,6 +149,19 @@
   </footer>
 
   <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.hero-bg'));
+      if (!slides.length) return;
+      let i = slides.findIndex(s => s.classList.contains('active'));
+      if (i < 0) i = 0, slides[0].classList.add('active');
+
+      setInterval(() => {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+      }, 3000);
+    })();
+
     (function () {
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.getElementById('main-nav');
