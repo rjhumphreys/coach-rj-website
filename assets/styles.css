@@ -433,6 +433,12 @@ main { min-height: 60vh; }
   .tiles { grid-template-columns: 1fr; gap: 0.9rem; margin: 2.5rem auto; }
 }
 
+/* Services page: equal-size tiles with aligned CTA */
+.service-tiles { grid-auto-rows: 1fr; }
+.service-tiles .tile { display: flex; flex-direction: column; height: 100%; }
+.service-tiles .tile p { flex: 1; }
+.service-tiles .tile-arrow { align-self: flex-start; }
+
 /* ====== Pull quote ====== */
 .pullquote {
   max-width: var(--wrap-narrow);
