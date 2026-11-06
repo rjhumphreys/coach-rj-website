@@ -1,0 +1,22 @@
+{
+  "sandbox": true,
+  "portalUrl": "https://billing.stripe.com/p/login/test_aFa4gzf0V0BO30A1Upew800",
+  "plans": [
+    {
+      "name": "Base Training Plan",
+      "amount": 7500,
+      "currency": "usd",
+      "interval": "month",
+      "intervalCount": 1,
+      "url": "https://buy.stripe.com/test_aFa4gzf0V0BO30A1Upew800"
+    },
+    {
+      "name": "Premium Coaching",
+      "amount": 37500,
+      "currency": "usd",
+      "interval": "month",
+      "intervalCount": 1,
+      "url": "https://buy.stripe.com/test_dRm9AT8Cx3O0bx6eHbew801"
+    }
+  ]
+}

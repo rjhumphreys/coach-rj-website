@@ -890,3 +890,18 @@ main { min-height: 60vh; }
 .response-frame {
   display: none;
 }
+
+/* ====== Customer portal ====== */
+[hidden] { display: none !important; }
+.billing-notice { padding: 1rem 1.25rem; border: 1px solid var(--clay); border-radius: var(--radius); }
+.billing-notice p { margin: 0.4rem 0 0; font-size: 0.95rem; }
+.subscription-plans { display: grid; gap: 1rem; margin: 1.5rem 0; }
+.subscription-plans h3 { margin-top: 0; }
+.button:focus-visible { outline: 3px solid var(--clay); outline-offset: 4px; }
+@media (min-width: 721px) and (max-width: 1000px) {
+  .nav { gap: 0.8rem; }
+  .nav a { font-size: 0.85rem; }
+}
+@media (max-width: 720px) {
+  .nav.nav-open { max-height: 420px; }
+}

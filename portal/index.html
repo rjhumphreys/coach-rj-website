@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Portal — Coach RJ</title>
+  <meta name="description" content="Start or manage your Coach RJ coaching subscription through secure Stripe checkout and customer login.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/">Coach RJ</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="main-nav" class="nav" aria-label="Main">
+        <a href="/about/">About</a>
+        <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+        <a href="/portal/">Customer Portal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="page">
+      <header class="page-header">
+        <div class="eyebrow">Your coaching account</div>
+        <h1>Customer Portal</h1>
+        <p class="subtitle">Your training. Your subscription. All in one place.</p>
+      </header>
+      <div class="prose">
+        <aside class="billing-notice" aria-label="Sandbox mode">
+          <strong>Sandbox mode</strong>
+          <p>This portal is for testing. No real payments are collected. Use Stripe test payment details, never a real card.</p>
+        </aside>
+        <p id="portal-status" role="status" aria-live="polite">Loading subscription options…</p>
+        <section class="callout" aria-labelledby="manage-heading">
+          <h2 id="manage-heading">Already training with RJ?</h2>
+          <p>Log in with the email address you used at checkout. Stripe verifies your email so you can securely manage your subscription, update your payment method, download invoices, or cancel at the end of your billing period.</p>
+          <a id="portal-login" class="button" hidden>Log in to manage subscription →</a>
+          <p>Already subscribed? Use the login above to manage it before starting another subscription.</p>
+        </section>
+        <section aria-labelledby="subscribe-heading">
+          <h2 id="subscribe-heading">Start a subscription</h2>
+          <p>After your free consultation, choose the subscription you agreed on with RJ. You’ll review the recurring price and payment details on Stripe’s secure checkout.</p>
+          <div id="subscription-plans" class="subscription-plans"></div>
+          <p>New here? <a href="/questionnaire/">Complete the training questionnaire</a> to arrange your consultation first.</p>
+        </section>
+        <noscript><p>Enable JavaScript to load secure subscription links, or contact Coach RJ for help.</p></noscript>
+        <p>Need help? <a href="mailto:coachrj.training@gmail.com">Contact Coach RJ</a>.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-tagline">Educate · Empower · Embrace</div>
+      <div class="footer-links">
+        <a href="mailto:coachrj.training@gmail.com">coachrj.training@gmail.com</a>
+        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
+    </div>
+  </footer>
+  <script src="/assets/navigation.js"></script>
+  <script src="/assets/portal.js"></script>
+</body>
+</html>
