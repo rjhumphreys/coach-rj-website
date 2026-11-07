@@ -25,7 +25,6 @@
         <a href="/services/">Services</a>
         <a href="/blog/">Blog</a>
         <a href="/contact/">Contact</a>
-        <a href="/portal/">Customer Portal</a>
       </nav>
     </div>
   </header>
@@ -39,26 +38,32 @@
       </header>
 
       <div class="prose">
+        <div id="manage-subscription" class="subscription-toolbar">
+          <p>Already subscribed?</p>
+          <a id="portal-login" class="button outline" hidden>Manage subscription →</a>
+          <p id="portal-status" role="status" aria-live="polite">Loading customer login…</p>
+          <noscript><p>Enable JavaScript to manage billing, or <a href="/contact/">contact RJ</a>.</p></noscript>
+        </div>
         <p>Good programming starts with context, getting to know your sport, training history, available equipment, schedule, and goals all shape the plan. Every coaching option begins with a free consultation, regarless if you choose Coach RJ Training or not.</p>
 
         <div class="tiles service-tiles">
       <a class="tile" href="/services/premium-coaching.html">
         <div class="tile-eyebrow">Individual</div>
         <h3>Premium Coaching</h3>
-        <p>$375/mo</p>
-        <span class="tile-arrow">Learn more →</span>
+        <p data-service-price="premium-coaching">View subscription options</p>
+        <span class="tile-arrow">Learn more &amp; subscribe →</span>
       </a>
       <a class="tile" href="/services/base-coaching.html">
         <div class="tile-eyebrow">Individual</div>
         <h3>Base Coaching</h3>
-        <p>$175/mo</p>
-        <span class="tile-arrow">Learn more →</span>
+        <p data-service-price="base-coaching">View subscription options</p>
+        <span class="tile-arrow">Learn more &amp; subscribe →</span>
       </a>
       <a class="tile" href="/services/teams-and-organization.html">
         <div class="tile-eyebrow">Groups</div>
         <h3>Teams and Organizations</h3>
-        <p>Starting @ $1050/mo</p>
-        <span class="tile-arrow">Learn more →</span>
+        <p data-service-price="teams-and-organization">View subscription options</p>
+        <span class="tile-arrow">Learn more &amp; subscribe →</span>
       </a>
         </div>
 
@@ -68,8 +73,6 @@
         <li>Complete Demo Video Examples</li>
         <li>Media and Journal Uploading</li>
         <li>Two Way Coach to Athlete Communication</li>
-
-        <p>Already working with RJ? <a href="/portal/">Start or manage your subscription in the Customer Portal →</a></p>
 
         <h2>How It Works</h2>
         <ol>
@@ -99,5 +102,6 @@
     </div>
   </footer>
   <script src="/assets/navigation.js"></script>
+  <script src="/assets/portal.js"></script>
 </body>
 </html>

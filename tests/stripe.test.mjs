@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
-import { syncStripe, isStripeUrl } from '../scripts/sync-stripe.mjs';
+import { syncStripe, isStripeUrl, serviceForProduct } from '../scripts/sync-stripe.mjs';
 
-const product = { id: 'prod_test', name: 'Coaching', active: true, livemode: false };
+const product = { id: 'prod_test', name: 'Coaching', active: true, livemode: false, metadata: { coach_rj_service: 'base-coaching' } };
 const price = { id: 'price_month', product: product.id, type: 'recurring', active: true, livemode: false, billing_scheme: 'per_unit', unit_amount: 17500, currency: 'usd', recurring: { interval: 'month', interval_count: 1, usage_type: 'licensed' } };
 function stripeMock({ existing = false, noPrices = false, live = false, fail = false, products, prices, links } = {}) {
   const calls = [];
@@ -51,7 +51,7 @@ test('provisions subscription checkout and authenticated portal; publishes only 
   assert.equal(portal.body.get('features[subscription_cancel][mode]'), 'at_period_end');
   assert.equal(portal.body.get('login_page[enabled]'), 'true');
   assert.equal(portal.body.get('features[payment_method_update][enabled]'), 'true');
-  assert.equal(portal.body.get('default_return_url'), 'https://coach.example/portal/');
+  assert.equal(portal.body.get('default_return_url'), 'https://coach.example/services/#manage-subscription');
   const checkout = mock.calls.find(c => c.path === 'payment_links' && c.method === 'POST');
   assert.equal(checkout.body.get('line_items[0][price]'), 'price_month');
   assert.equal(checkout.body.get('line_items[0][quantity]'), '1');
@@ -117,9 +117,9 @@ test('archiving the last product removes its listing and managed link while reta
   assert.deepEqual(config.plans, []);
   const disabled = mock.calls.filter(call => call.body.get('active') === 'false');
   assert.deepEqual(disabled.map(call => call.path), ['payment_links/plink_test']);
-  const elements = await renderPortal(config);
+  const elements = await renderPortal(config, true, { detail: false });
   assert.equal(elements.get('portal-login').hidden, false);
-  assert.match(elements.get('portal-status').textContent, /No subscriptions are currently available/);
+  assert.match(elements.get('portal-status').textContent, /email address/);
 });
 
 test('API failure does not expose secrets or response bodies', async () => {
@@ -137,10 +137,15 @@ test('validates exact Stripe hosts, HTTPS, and sandbox checkout paths', () => {
   }
 });
 
-async function renderPortal(config, ok = true) {
+async function renderPortal(config, ok = true, { detail = true, service = 'base-coaching', priceServices = [] } = {}) {
   const elements = new Map();
-  function element() { return { children: [], hidden: true, append(...items) { this.children.push(...items); }, replaceChildren(...items) { this.children = items; } }; }
-  const document = { getElementById(id) { if (!elements.has(id)) elements.set(id, element()); return elements.get(id); }, createElement: element };
+  function element(dataset = {}) { return { dataset, children: [], hidden: true, append(...items) { this.children.push(...items); }, replaceChildren(...items) { this.children = items; } }; }
+  elements.set('portal-login', element());
+  elements.set('portal-status', element());
+  if (detail) elements.set('subscription-plans', element({ service }));
+  const priceElements = priceServices.map(servicePrice => element({ servicePrice }));
+  elements.set('prices', priceElements);
+  const document = { getElementById(id) { return elements.get(id) ?? null; }, querySelectorAll() { return priceElements; }, createElement: element };
   const source = await readFile(new URL('../assets/portal.js', import.meta.url), 'utf8');
   await vm.runInNewContext(source, { document, URL, Intl, fetch: async () => ({ ok, json: async () => config }) });
   return elements;
@@ -164,4 +169,46 @@ test('portal fails safely for unconfigured, unreachable, or untrusted billing', 
   }
   const elements = await renderPortal(null, false);
   assert.equal(elements.get('portal-login').hidden, true);
+});
+
+test('matches the three current service products exactly, with metadata taking priority', () => {
+  for (const [name, service] of [['Base Training Plan', 'base-coaching'], ['Base Coaching', 'base-coaching'], ['Premium Coaching', 'premium-coaching'], ['Team Training Plan', 'teams-and-organization'], ['Team Pln', 'teams-and-organization'], ['Teams and Organizations', 'teams-and-organization']]) {
+    assert.equal(serviceForProduct({ name }), service);
+  }
+  assert.equal(serviceForProduct({ name: 'Renamed plan', metadata: { coach_rj_service: 'premium-coaching' } }), 'premium-coaching');
+  assert.equal(serviceForProduct({ name: 'Premium Coaching Extra' }), null);
+  assert.equal(serviceForProduct({ name: 'Base Coaching', metadata: { coach_rj_service: 'invalid-service' } }), null);
+});
+
+test('each service page offers only its corresponding subscription and preserves multiple billing intervals', async () => {
+  const config = { sandbox: true, portalUrl: 'https://billing.stripe.com/p/login/test_login', plans: [
+    { name: 'Base Training Plan', service: 'base-coaching', amount: 7500, currency: 'usd', interval: 'month', intervalCount: 1, url: 'https://buy.stripe.com/test_base' },
+    { name: 'Premium Coaching', service: 'premium-coaching', amount: 37500, currency: 'usd', interval: 'month', intervalCount: 1, url: 'https://buy.stripe.com/test_premium' },
+    { name: 'Team Pln', service: 'teams-and-organization', amount: 105000, currency: 'usd', interval: 'month', intervalCount: 1, url: 'https://buy.stripe.com/test_team' },
+  ] };
+  for (const plan of config.plans) {
+    const elements = await renderPortal(config, true, { service: plan.service });
+    const cards = elements.get('subscription-plans').children;
+    assert.equal(cards.length, 1);
+    assert.equal(cards[0].children[2].href, plan.url);
+  }
+  const annual = { ...config.plans[0], interval: 'year', amount: 75000, url: 'https://buy.stripe.com/test_annual' };
+  const elements = await renderPortal({ ...config, plans: [...config.plans, annual] });
+  assert.equal(elements.get('subscription-plans').children.length, 2);
+});
+
+test('missing service products cannot fall back to an unrelated checkout', async () => {
+  const config = await syncStripe({ ...credentials, ...stripeMock() });
+  const elements = await renderPortal(config, true, { service: 'premium-coaching' });
+  assert.equal(elements.get('subscription-plans').children.length, 0);
+  assert.match(elements.get('portal-status').textContent, /not currently available/);
+  assert.equal(elements.get('portal-login').hidden, false);
+});
+
+test('services overview gets current Stripe prices and portal has no duplicate purchase catalog', async () => {
+  const config = await syncStripe({ ...credentials, ...stripeMock() });
+  const elements = await renderPortal(config, true, { detail: false, priceServices: ['base-coaching', 'premium-coaching'] });
+  assert.equal(elements.has('subscription-plans'), false);
+  assert.equal(elements.get('portal-login').hidden, false);
+  assert.deepEqual(elements.get('prices').map(element => element.textContent), ['$175.00 / month', 'View subscription options']);
 });

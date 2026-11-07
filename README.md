@@ -34,8 +34,12 @@ Google Form. If the Google Form is replaced, update the form `action` and the
 
 ## Customer subscriptions (Stripe sandbox)
 
-The `/portal/` page offers new subscriptions through Stripe Payment Links and
-existing subscription management through Stripe's hosted, email-verified customer
+The `/services/` page links to each service's description, where customers can
+subscribe to that service through Stripe Payment Links. Prices on the Services
+page and checkout options on each detail page come from the same synced catalog.
+The **Manage subscription** link at the top of Services opens Stripe directly.
+There is no standalone portal page; old `/portal/` links redirect to Services.
+Existing subscriptions are managed through Stripe's hosted, email-verified customer
 portal. Customers use their checkout email to log in; the site does not store
 passwords, card details, or customer records. The portal supports payment method
 updates, invoices, and cancellation at the end of the billing period. Subscription
@@ -48,7 +52,7 @@ TeamBuildr or provision coaching automatically.
    `STRIPE_SANDBOX_PRODUCT_ID` is no longer used and may be removed;
    `STRIPE_SANDBOX_PUBLIC_KEY` is not needed for hosted checkout.
 2. Manage products and prices directly in the sandbox that belongs to this key.
-   Every active product with an active, fixed, positive recurring price is listed.
+   Every active product with an active, fixed, positive recurring price is synced.
    One-time, metered, tiered, and custom-amount prices are excluded. The sync never
    creates products/prices or guesses amounts from the Services page. To change a
    price in Stripe, add its replacement and archive the old price so both are not
@@ -63,7 +67,7 @@ TeamBuildr or provision coaching automatically.
    GitHub can disable schedules in public repositories after 60 days without
    repository activity; re-enable the workflow in Actions if that happens.
 4. Allow this workflow to write repository contents. It commits only the generated
-   public checkout URLs, portal login URL, product names, and price display data to
+   public checkout URLs, portal login URL, product names, service associations, and price display data to
    `assets/stripe-config.json`. If branch protection blocks the bot's push, allow
    this workflow through your normal repository policy or run the script locally
    with the secrets in environment variables and submit the public JSON via a PR.
@@ -83,6 +87,26 @@ unnecessary site deployments.
 Until configuration is generated, billing actions remain hidden and the page
 shows a contact fallback. GitHub secrets cannot be read from a local checkout.
 
+### Service associations
+
+The sync matches these current Stripe product names to the existing service pages:
+
+| Service page | Stripe product names |
+| --- | --- |
+| Base Coaching | Base Training Plan, Base Coaching |
+| Premium Coaching | Premium Coaching |
+| Teams and Organizations | Team Training Plan, Team Pln, Team Plan, Teams and Organizations |
+
+To preserve a match when renaming a Stripe product, set its product metadata key
+`coach_rj_service` to `base-coaching`, `premium-coaching`, or
+`teams-and-organization`. This explicit association takes priority over name
+matching. Only exact known names are matched automatically. Unmatched products
+remain in the synced catalog but are not attached to an unrelated service page.
+If a service has multiple recurring prices, all appear on its description page;
+the overview says **View subscription options** rather than choosing a billing
+interval for the customer. If a product is unavailable, its detail page shows a
+contact fallback and never substitutes another product's checkout link.
+
 ### Verification
 
 For local Stripe validation, put `STRIPE_SANDBOX_SECRET_KEY` in a `.env` file and run:
@@ -96,7 +120,7 @@ reuses sandbox checkout and portal links and updates only the public configurati
 
 After checkout, Stripe automatically redirects customers to
 `https://coach-rj.com/portal/thanks/`. The billing portal also includes a return
-link to `https://coach-rj.com/portal/`. The thank-you page directs customers to
+link to `https://coach-rj.com/services/#manage-subscription`. The thank-you page directs customers to
 their confirmation email and billing portal for the actual payment status;
 visiting it alone does not verify a payment or grant access to training.
 
@@ -111,9 +135,9 @@ Run `npm test` and `npm run build` locally. Tests mock Stripe and verify provisi
 resource reuse, sandbox-only credentials, safe public output, URL validation,
 pricing display, and unavailable states.
 
-After the workflow and Cloudflare deployment succeed, visit `/portal/`, complete
-a subscription using Stripe's sandbox payment details, then use the same email
-with **Log in to manage subscription**. Verify invoices, a payment method change,
+After the workflow and Cloudflare deployment succeed, visit `/services/`, choose a service, and complete
+a subscription from its description page using Stripe's sandbox payment details.
+Then use **Manage subscription** at the top of `/services/` with the same email. Verify invoices, a payment method change,
 and end-of-period cancellation in Stripe. Sandbox email delivery can differ from
 live mode; follow Stripe's sandbox login instructions. Never use a real card.
 

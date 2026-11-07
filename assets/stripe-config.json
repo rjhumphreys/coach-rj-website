@@ -4,6 +4,7 @@
   "plans": [
     {
       "name": "Base Training Plan",
+      "service": "base-coaching",
       "amount": 7500,
       "currency": "usd",
       "interval": "month",
@@ -12,6 +13,7 @@
     },
     {
       "name": "Premium Coaching",
+      "service": "premium-coaching",
       "amount": 37500,
       "currency": "usd",
       "interval": "month",
@@ -20,6 +22,7 @@
     },
     {
       "name": "Team Training Plan",
+      "service": "teams-and-organization",
       "amount": 105000,
       "currency": "usd",
       "interval": "month",

@@ -3,6 +3,20 @@ import { pathToFileURL } from 'node:url';
 
 const OWNER = 'coach-rj-website';
 
+// Exact aliases avoid accidentally attaching a different product to a service.
+// Stripe product metadata can keep the association stable through future renames.
+export function serviceForProduct(product) {
+  const aliases = {
+    'base-coaching': ['base coaching', 'base training plan'],
+    'premium-coaching': ['premium coaching'],
+    'teams-and-organization': ['teams and organizations', 'teams and organization', 'team training plan', 'team plan', 'team pln'],
+  };
+  const explicit = product.metadata?.coach_rj_service;
+  if (explicit) return Object.hasOwn(aliases, explicit) ? explicit : null;
+  const name = product.name.trim().toLowerCase().replace(/\s+/g, ' ');
+  return Object.keys(aliases).find(service => aliases[service].includes(name)) ?? null;
+}
+
 // Only this setup script, run locally or in GitHub Actions, sees the Stripe secret.
 export async function syncStripe({ secretKey, siteUrl, fetchImpl = fetch }) {
   if (!/^sk_test_/.test(secretKey || '')) throw new Error('STRIPE_SANDBOX_SECRET_KEY must be a sandbox secret key.');
@@ -60,7 +74,7 @@ export async function syncStripe({ secretKey, siteUrl, fetchImpl = fetch }) {
     'metadata[website]': OWNER,
     'metadata[product]': '',
     'business_profile[headline]': 'Manage your Coach RJ subscription',
-    default_return_url: `${origin}/portal/`,
+    default_return_url: `${origin}/services/#manage-subscription`,
     'features[invoice_history][enabled]': 'true',
     'features[payment_method_update][enabled]': 'true',
     'features[subscription_cancel][enabled]': 'true',
@@ -88,7 +102,7 @@ export async function syncStripe({ secretKey, siteUrl, fetchImpl = fetch }) {
       link = await api(`payment_links/${link.id}`, completion, 'POST');
     }
     if (!isStripeUrl(link.url, 'buy.stripe.com', '/test_')) throw new Error('Stripe did not return a sandbox checkout link.');
-    plans.push({ name: product.name, amount: price.unit_amount, currency: price.currency, interval: price.recurring.interval, intervalCount: price.recurring.interval_count, url: link.url });
+    plans.push({ name: product.name, service: serviceForProduct(product), amount: price.unit_amount, currency: price.currency, interval: price.recurring.interval, intervalCount: price.recurring.interval_count, url: link.url });
   }
   // Stop selling archived/unsupported products and prices through our old links.
   // Existing subscriptions and links created elsewhere are left alone.
