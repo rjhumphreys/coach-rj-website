@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building Consistent Strength — Coach RJ</title>
+  <meta name="description" content="Consistency is the most underrated training variable. Here's a short framework for building reliable progress without chasing maximal intensity every session.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/">Coach RJ</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="main-nav" class="nav" aria-label="Main">
+        <a href="/about/">About</a>
+        <a href="/work/">Work</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="page">
+      <header class="page-header">
+        <div class="eyebrow">Blog</div>
+        <h1>Building Consistent Strength</h1>
+        <div class="meta">August 5, 2026 · Training</div>
+      </header>
+
+      <div class="prose">
+        <p>There's a myth that's stuck in my head for years: <em>"If you don't hit PRs every week, you're not progressing."</em> I've heard this from athletes, coaches, and even myself. But here's the truth: <strong>consistency beats intensity every single time</strong>.</p>
+
+        <blockquote>
+          "Progress is compound. It's not about the single best workout; it's about showing up every day and doing the work."
+        </blockquote>
+
+        <h2>The Intensity Trap</h2>
+
+        <p>Chasing maximal intensity every session creates a false sense of progress. You might PR one week, then have three weeks of stagnation. The difference? The first week looked impressive; the second, third, and fourth were a disaster.</p>
+
+        <p>Consistency is about <em>showing up</em>, not about how hard you feel in any given session.</p>
+
+        <h2>The Consistency Framework</h2>
+
+        <h3>1. Minimum Effective Dose</h3>
+        <p>Find the minimum amount of training that produces results. If you're training 6 days a week and making progress, can you drop to 4 days? If you're training 3 days a week and plateauing, can you increase to 5 days?</p>
+
+        <p>The goal isn't to train more; it's to find your <em>optimal</em> frequency that fits your life and produces progress.</p>
+
+        <h3>2. Consistency Score (0-100)</h3>
+        <p>Every week, give yourself a consistency score based on:</p>
+        <ul>
+          <li><strong>Volume completed</strong> — % of planned volume actually done</li>
+          <li><strong>Intensity maintained</strong> — % of sets performed at target intensity</li>
+          <li><strong>Recovery quality</strong> — sleep, stress, nutrition</li>
+        </ul>
+
+        <p>This becomes your training baseline. If you score 80/100 one week, you know you can train harder next week. If you score 50/100, you know you need to dial back and recover.</p>
+
+        <h3>3. Progressive Overload Without PRs</h3>
+        <p>You don't need to PR every week. You need to progressively overload consistently. This means:</p>
+        <ul>
+          <li><strong>More reps</strong> — same weight, slightly more volume</li>
+          <li><strong>More volume</strong> — same rep scheme, slightly more sets</li>
+          <li><strong>Slightly higher intensity</strong> — same weight, 1-2 more reps</li>
+          <li><strong>Better technique</strong> — same intensity, improved execution</li>
+          <li><strong>More consistency</strong> — more training days, no missed sessions</li>
+        </ul>
+
+        <h3>4. The 2-Week Rule</h3>
+        <p>Don't judge your progress on single weeks. If you miss a week or two, don't let it spiral. The next week, just get back on track. Treat setbacks as data points, not failures.</p>
+
+        <h2>Practical Application</h2>
+
+        <p>Here's how I apply this framework to my athletes:</p>
+
+        <ol>
+          <li><strong>Set a weekly consistency target</strong> — 85-95% completion</li>
+          <li><strong>Track every session</strong> — use a journal or app</li>
+          <li><strong>Weekly review</strong> — look at the pattern over 4-8 weeks, not single weeks</li>
+          <li><strong>Adjust based on data</strong> — if consistency is 85%, increase volume 5-10%; if 55%, reduce volume 15-20%</li>
+        </ol>
+
+        <div class="callout">
+          <h2>Bottom Line</h2>
+          <p>Consistency is the most underrated training variable. It compounds over time. It's the difference between athletes who plateau and those who progress. <strong>Don't chase intensity. Chase consistency.</strong></p>
+        </div>
+
+        <p><em>— Coach RJ</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-wrap">
+      <div class="footer-tagline">Educate · Empower · Embrace</div>
+      <div class="footer-links">
+        <a href="mailto:raymond.humphreys@my.colby-sawyer.edu">raymond.humphreys@my.colby-sawyer.edu</a>
+        <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation toggle with early execution to prevent flashing
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
