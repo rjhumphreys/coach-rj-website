@@ -1009,7 +1009,7 @@ main { min-height: 60vh; }
 .subscription-toolbar .button {
   background: var(--stone-900);
   color: var(--cream);
-  border: none;
+  border: 2px solid var(--stone-400);
 }
 .subscription-toolbar p { margin: 0; }
 .subscription-toolbar .form-status, .subscription-toolbar [role="status"] { flex-basis: 100%; font-size: 0.9rem; }
