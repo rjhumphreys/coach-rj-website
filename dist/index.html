@@ -10,271 +10,22 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/styles.css">
   <style>
-    /* Enhanced Hero Animations */
-    .hero-bg {
-      animation: hero-fade 30s infinite;
-      animation-play-state: paused;
-    }
-    
-    .hero-bg.active {
-      animation-play-state: running;
-    }
+    /* Full-screen carousel visuals: fade between background images and center overlay content */
+    .hero-fullwidth { position: relative; height: 100vh; min-height: 100vh; overflow: hidden; }
+    .hero-carousel { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-carousel .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 900ms ease-in-out; }
+    .hero-carousel .hero-bg.active { opacity: 1; z-index: 1; }
 
-    @keyframes hero-fade {
-      0%, 100% { opacity: 0; }
-      10% { opacity: 1; }
-      20% { opacity: 0; }
-      30% { opacity: 1; }
-      40% { opacity: 0; }
-      50% { opacity: 1; }
-      60% { opacity: 0; }
-      70% { opacity: 1; }
-      80% { opacity: 0; }
-      90% { opacity: 1; }
-    }
+    /* Overlay sits on top of images and centers content */
+    .hero-overlay { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .hero-content { pointer-events: auto; color: #fff; text-align: center; padding: 2rem; max-width: 980px; }
 
-    /* Smooth scroll behavior */
-    html {
-      scroll-behavior: smooth;
-    }
+    /* Optional: subtle gradient to improve text contrast */
+    .hero-overlay::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.35)); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; }
 
-    /* Subtle parallax effect on hero */
-    .hero-fullwidth {
-      perspective: 1000px;
-    }
-
-    /* Animated tile hover effects */
-    .tile {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .tile:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 40px rgba(74, 107, 94, 0.15);
-    }
-
-    .tile:hover .tile-arrow {
-      transform: translateX(5px);
-      color: var(--clay);
-    }
-
-    /* Fade-in animations for sections */
-    .section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Animated pull quote */
-    .pullquote p {
-      animation: pullquote-slide 1s ease-out;
-      animation-delay: 0.3s;
-    }
-
-    @keyframes pullquote-slide {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    /* Gradient text effect */
-    .gradient-text {
-      background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 50%, var(--clay) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Card grid with staggered animations */
-    .card-grid {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .card:nth-child(1) { transition-delay: 0.1s; }
-    .card:nth-child(2) { transition-delay: 0.2s; }
-    .card:nth-child(3) { transition-delay: 0.3s; }
-    .card:nth-child(4) { transition-delay: 0.4s; }
-    .card:nth-child(5) { transition-delay: 0.5s; }
-    .card:nth-child(6) { transition-delay: 0.6s; }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(74, 107, 94, 0.1);
-    }
-
-    /* Smooth button hover */
-    .button {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .button::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: left 0.4s ease;
-    }
-
-    .button:hover::after {
-      left: 100%;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(74, 107, 94, 0.2);
-    }
-
-    /* Floating elements animation */
-    .floating-icon {
-      position: relative;
-      display: inline-block;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Timeline animation */
-    .timeline-item {
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.6s ease;
-    }
-
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* Smooth section transitions */
-    section {
-      margin: 6rem 0;
-    }
-
-    /* Improved typography hierarchy */
-    h1 {
-      background: linear-gradient(135deg, var(--ink) 0%, var(--sage-deep) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    h2 {
-      position: relative;
-      padding-bottom: 1rem;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--sage), var(--clay));
-      border-radius: 2px;
-    }
-
-    /* Enhanced eyebrow styling */
-    .eyebrow {
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      color: var(--sage);
-      margin-bottom: 1.5rem;
-    }
-
-    .eyebrow a {
-      position: relative;
-      text-decoration: none;
-      overflow: hidden;
-    }
-
-    .eyebrow a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--clay);
-      transition: width 0.3s ease;
-    }
-
-    .eyebrow a:hover::after {
-      width: 100%;
-    }
-
-    /* Improved spacing and breathing room */
-    .page {
-      padding: 5rem 1.5rem 4rem;
-    }
-
-    .page-header {
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    /* Better mobile responsiveness */
-    @media (max-width: 768px) {
-      .hero-fullwidth {
-        min-height: 70vh;
-      }
-
-      .hero-content {
-        padding: 1.5rem;
-        max-width: 100%;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .page {
-        padding: 3rem 1rem 2rem;
-      }
-
-      section {
-        margin: 3rem 0;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tile {
-        margin-bottom: 1.5rem;
-      }
-    }
+    /* Make sure header sits above the hero when fixed (if needed) */
+    .site-header { position: relative; z-index: 3; }
   </style>
 </head>
 <body>
@@ -297,260 +48,53 @@
   </header>
 
   <main>
-    <!-- Hero Section with Enhanced Visuals -->
     <section class="hero-fullwidth">
       <div class="hero-carousel">
-        <img srcset="/assets/images/Gym-Aura-sm.JPG 640w, /assets/images/Gym-Aura.JPG 1920w" sizes="100vw" src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="hero-bg active" loading="eager" fetchpriority="high">
-        <img srcset="/assets/images/Presi-Sunrise-sm.JPG 640w, /assets/images/Presi-Sunrise.JPG 1920w" sizes="100vw" src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="hero-bg" loading="lazy">
-        <img srcset="/assets/images/Luke-Climb-sm.JPG 640w, /assets/images/Luke-Climb.JPG 1920w" sizes="100vw" src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg" loading="lazy">
-        <img srcset="/assets/images/Pinnacle-Traverse-sm.JPG 640w, /assets/images/Pinnacle-Traverse.JPG 1920w" sizes="100vw" src="/assets/images/Pinnacle-Traverse.JPG" alt="Pinnacle traverse" class="hero-bg" loading="lazy">
-        <img srcset="/assets/images/hero-banner-sm.coach.jpg 640w, /assets/images/hero-banner.coach.jpg 1920w" sizes="100vw" src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="hero-bg" loading="lazy">
-        <img srcset="/assets/images/Spring-Tucks-sm.JPG 640w, /assets/images/Spring-Tucks.JPG 1920w" sizes="100vw" src="/assets/images/Spring-Tucks.JPG" alt="Spring tucks" class="hero-bg" loading="lazy">
-        <img srcset="/assets/images/Tucks-Spring-sm.jpg 640w, /assets/images/Tucks-Spring.jpg 1920w" sizes="100vw" src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg" loading="lazy">
-      </div>
+    <img srcset="/assets/images/Gym-Aura-sm.JPG 640w, /assets/images/Gym-Aura.JPG 1920w" sizes="100vw" src="/assets/images/Gym-Aura.JPG" alt="Gym interior with aura" class="hero-bg active" loading="eager" fetchpriority="high" decoding="async">
+    <img srcset="/assets/images/Presi-Sunrise-sm.JPG 640w, /assets/images/Presi-Sunrise.JPG 1920w" sizes="100vw" src="/assets/images/Presi-Sunrise.JPG" alt="Sunrise at Presi" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Luke-Climb-sm.JPG 640w, /assets/images/Luke-Climb.JPG 1920w" sizes="100vw" src="/assets/images/Luke-Climb.JPG" alt="Luke climbing" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Pinnacle-Traverse-sm.JPG 640w, /assets/images/Pinnacle-Traverse.JPG 1920w" sizes="100vw" src="/assets/images/Pinnacle-Traverse.JPG" alt="Pinnacle traverse" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/hero-banner-sm.coach.jpg 640w, /assets/images/hero-banner.coach.jpg 1920w" sizes="100vw" src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Spring-Tucks-sm.JPG 640w, /assets/images/Spring-Tucks.JPG 1920w" sizes="100vw" src="/assets/images/Spring-Tucks.JPG" alt="Spring tucks" class="hero-bg" loading="lazy">
+    <img srcset="/assets/images/Tucks-Spring-sm.jpg 640w, /assets/images/Tucks-Spring.jpg 1920w" sizes="100vw" src="/assets/images/Tucks-Spring.jpg" alt="Tucks in spring" class="hero-bg" loading="lazy">
+</div>
       <div class="hero-overlay">
         <div class="hero-content">
-          <div class="eyebrow">Strength & Conditioning Coach</div>
-          <h1>Helping Everyone Reach Their <span class="gradient-text">Peak</span></h1>
+          <div class="eyebrow">Strength &amp; Conditioning Coach</div>
+          <h1>Helping Everyone Reach Their Peak</h1>
           <p class="lede">
-            Building winter sport athletes, outdoor enthusiasts, college and high school teams, and committed individuals
+            Building winter sport, outdoor athletes, college and high school teams, and committed individuals
             into stronger, more resilient versions of themselves.
           </p>
-          <a class="button" href="/services/">
-            <span>Ready to Get Started?</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
-              <path d="M5 12h14"/>
-              <path d="m12 5 7 7-7 7"/>
-            </svg>
-          </a>
+          <a class="button" href="/services/">Ready to Get Started? →</a>
         </div>
       </div>
     </section>
 
-    <!-- Animated Service Tiles -->
-    <section class="section">
-      <div class="wrap">
-        <div class="card-grid">
-          <a class="tile" href="/about/">
-            <div class="tile-eyebrow">
-              <span style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-                About
-              </span>
-            </div>
-            <h3>Coach RJ</h3>
-            <p>Background, education, and the philosophy behind the work.</p>
-            <span class="tile-arrow">Read more →</span>
-          </a>
-
-          <a class="tile" href="/work/">
-            <div class="tile-eyebrow">
-              <span style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-                  <path d="M13 2H6a5 5 0 0 0-5 5v12a5 5 0 0 0 5 5h12a5 5 0 0 0 5-5V7c0-4-3-7-7-7zm-6 13v2m0-8v8m0-8V5"/>
-                </svg>
-                Work
-              </span>
-            </div>
-            <h3>Projects & Writing</h3>
-            <p>Graduate research, case studies, and training write-ups.</p>
-            <span class="tile-arrow">See the work →</span>
-          </a>
-
-          <a class="tile" href="/contact/">
-            <div class="tile-eyebrow">
-              <span style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-                Connect
-              </span>
-            </div>
-            <h3>Get In Touch</h3>
-            <p>For coaching inquiries, athletes, parents, and programs.</p>
-            <span class="tile-arrow">Reach out →</span>
-          </a>
-        </div>
-      </div>
+    <section class="tiles">
+      <a class="tile" href="/about/">
+        <div class="tile-eyebrow">About</div>
+        <h3>Coach RJ</h3>
+        <p>Background, education, and the philosophy behind the work.</p>
+        <span class="tile-arrow">Read more →</span>
+      </a>
+      <a class="tile" href="/work/">
+        <div class="tile-eyebrow">Work</div>
+        <h3>Projects &amp; Writing</h3>
+        <p>Graduate research, case studies, and training write-ups.</p>
+        <span class="tile-arrow">See the work →</span>
+      </a>
+      <a class="tile" href="/contact/">
+        <div class="tile-eyebrow">Connect</div>
+        <h3>Get In Touch</h3>
+        <p>For coaching inquiries, athletes, parents, and programs.</p>
+        <span class="tile-arrow">Reach out →</span>
+      </a>
     </section>
 
-    <!-- Animated Pull Quote -->
-    <section class="section pullquote">
-      <p class="gradient-text">"Educate. Empower. Embrace."</p>
-      <cite style="animation: pullquote-slide 1s ease-out; animation-delay: 0.5s;">Coach RJ's working principles</cite>
-    </section>
-
-    <!-- Mission Statement Section -->
-    <section class="section">
-      <div class="wrap">
-        <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
-          <div>
-            <div class="eyebrow">My Philosophy</div>
-            <h2 style="margin-bottom: 1.5rem; text-align: left;">Process Over Outcome</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-              I believe true athletic excellence comes from consistent effort and thoughtful training, 
-              not from quick fixes or chasing every possible result. Whether you're an elite athlete 
-              or someone just starting out, the journey matters just as much as the destination.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--sage-deep);">
-              <strong>Consistency over intensity</strong> means training smart, respecting recovery, 
-              and building habits that last. The best results come from showing up regularly and 
-              focusing on the process, not just the outcome.
-            </p>
-          </div>
-          <div style="display: flex; justify-content: center;">
-            <div class="floating-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Values Section with Cards -->
-    <section class="section">
-      <div class="wrap">
-        <div class="eyebrow">Core Values</div>
-        <h2 style="text-align: center; margin-bottom: 2.5rem;">What Drives My Work</h2>
-        
-        <div class="card-grid">
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--sage-deep);">Integrity</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">Transparent communication and honest assessments of progress and potential.</p>
-          </div>
-
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: var(--clay); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--clay);">Data-Driven</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">Using performance metrics and tracking to make informed training decisions.</p>
-          </div>
-
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: var(--sage-light); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--sage-light);">Adaptability</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">Flexibly adjusting programs to match individual needs and changing circumstances.</p>
-          </div>
-
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: var(--sage-deep); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--sage-deep);">Specialization</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">Deep expertise in winter sports and outdoor training, applied with precision.</p>
-          </div>
-
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: #fff; border: 2px solid var(--sage); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--sage);">Passion</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">A genuine love for the sport and commitment to helping others excel.</p>
-          </div>
-
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-              <div style="width: 40px; height: 40px; background: var(--cream-soft); border: 2px solid var(--clay); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
-                </svg>
-              </div>
-              <h3 style="margin: 0; color: var(--clay);">Community</h3>
-            </div>
-            <p style="font-size: 0.95rem; margin: 0;">Building supportive networks and fostering relationships that inspire growth.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest News/Updates Section -->
-    <section class="section">
-      <div class="wrap">
-        <div class="eyebrow">Updates</div>
-        <h2 style="text-align: center; margin-bottom: 2.5rem;">Latest News & Insights</h2>
-        
-        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-          <a class="tile" href="/blog/">
-            <div class="tile-eyebrow">Blog</div>
-            <h3>Recent Articles</h3>
-            <p style="margin-top: 0.75rem;">Training insights, case studies, and thoughts on the craft.</p>
-            <span class="tile-arrow">Read the latest →</span>
-          </a>
-
-          <a class="tile" href="/work/">
-            <div class="tile-eyebrow">Portfolio</div>
-            <h3>Featured Projects</h3>
-            <p style="margin-top: 0.75rem;">Highlights from graduate research and real-world coaching applications.</p>
-            <span class="tile-arrow">View the work →</span>
-          </a>
-
-          <a class="tile" href="/contact/">
-            <div class="tile-eyebrow">Contact</div>
-            <h3>Get in Touch</h3>
-            <p style="margin-top: 0.75rem;">Whether you're an athlete, coach, or parent, I'm here to help.</p>
-            <span class="tile-arrow">Start a conversation →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="section">
-      <div class="wrap" style="text-align: center; padding: 4rem 2rem;">
-        <h2 style="margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Ready to Start Your Journey?
-        </h2>
-        <p style="font-size: 1.1rem; color: var(--stone); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-          Whether you're looking for coaching, training resources, or just want to learn more about my approach,
-          I'd love to hear from you.
-        </p>
-        <a class="button" href="/contact/">
-          Let's Connect
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
+    <section class="pullquote">
+      <p>"Educate. Empower. Embrace."</p>
+      <cite>Coach RJ's working principles</cite>
     </section>
   </main>
 
@@ -558,7 +102,7 @@
     <div class="wrap footer-wrap">
       <div class="footer-tagline">Educate · Empower · Embrace</div>
       <div class="footer-links">
-        <a href="mailto:raymond.humphreys@my.colby-sawyer.edu">raymond.humphreys@my.colby-sawyer.edu</a>
+        <a href="mailto:coachrj.training@gmail.com">coachrj.training@gmail.com</a>
         <a href="https://instagram.com/rj_fast" target="_blank" rel="noopener">Instagram @rj_fast</a>
       </div>
       <div class="footer-copy">&copy; 2026 Raymond J. Humphreys</div>
@@ -566,13 +110,12 @@
   </footer>
 
   <script>
-    // Enhanced carousel with smooth transitions
+    // Simple carousel: rotate .hero-bg.active every 3 seconds with fade transition
     (function () {
       const slides = Array.from(document.querySelectorAll('.hero-bg'));
       if (!slides.length) return;
       let i = slides.findIndex(s => s.classList.contains('active'));
-      if (i < 0) i = 0;
-      slides[i].classList.add('active');
+      if (i < 0) i = 0, slides[0].classList.add('active');
 
       setInterval(() => {
         slides[i].classList.remove('active');
@@ -581,40 +124,6 @@
       }, 3000);
     })();
 
-    // Smooth scroll animations on scroll
-    (function () {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      // Observe sections
-      document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
-      });
-
-      // Observe cards
-      document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-      });
-
-      // Observe timeline items
-      document.querySelectorAll('.timeline-item').forEach(item => {
-        observer.observe(item);
-      });
-    })();
-
-    // Navigation toggle
     (function () {
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.getElementById('main-nav');
@@ -630,20 +139,6 @@
           nav.classList.remove('nav-open');
           toggle.setAttribute('aria-expanded', 'false');
         });
-      });
-    })();
-
-    // Header scroll effect
-    (function () {
-      const header = document.querySelector('.site-header');
-      if (!header) return;
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-        } else {
-          header.style.boxShadow = 'none';
-        }
       });
     })();
   </script>
