@@ -885,6 +885,7 @@ main { min-height: 60vh; }
   padding: 1.5rem;
   border-left: 3px solid var(--sage);
   background: var(--cream-soft);
+  text-align: center;
 }
 
 .callout h2 {
