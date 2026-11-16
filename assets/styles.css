@@ -1004,7 +1004,7 @@ main { min-height: 60vh; }
   .nav.nav-open { max-height: 420px; }
 }
 
-.subscription-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem 1rem; margin-bottom: 2rem; }
+.subscription-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem 1rem; margin-bottom: 2rem; text-align: center; color: white; }
 .subscription-toolbar p { margin: 0; }
 .subscription-toolbar .form-status, .subscription-toolbar [role="status"] { flex-basis: 100%; font-size: 0.9rem; }
 #manage-subscription { scroll-margin-top: 6rem; }
