@@ -1,0 +1,33 @@
+{
+  "sandbox": true,
+  "portalUrl": "https://billing.stripe.com/p/login/test_aFa4gzf0V0BO30A1Upew800",
+  "plans": [
+    {
+      "name": "Base Training Plan",
+      "service": "base-coaching",
+      "amount": 7500,
+      "currency": "usd",
+      "interval": "month",
+      "intervalCount": 1,
+      "url": "https://buy.stripe.com/test_aFa4gzf0V0BO30A1Upew800"
+    },
+    {
+      "name": "Premium Coaching",
+      "service": "premium-coaching",
+      "amount": 37500,
+      "currency": "usd",
+      "interval": "month",
+      "intervalCount": 1,
+      "url": "https://buy.stripe.com/test_dRm9AT8Cx3O0bx6eHbew801"
+    },
+    {
+      "name": "Team Training Plan",
+      "service": "teams-and-organization",
+      "amount": 105000,
+      "currency": "usd",
+      "interval": "month",
+      "intervalCount": 1,
+      "url": "https://buy.stripe.com/test_9B68wP9GBgAM0SsgPjew802"
+    }
+  ]
+}
