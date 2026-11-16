@@ -413,12 +413,15 @@ main { min-height: 60vh; }
   color: var(--ink);
 }
 .tile-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--sage);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 .tile h3 {
   font-family: var(--font-display);
@@ -438,6 +441,92 @@ main { min-height: 60vh; }
 .service-tiles .tile { display: flex; flex-direction: row; height: 100%; }
 .service-tiles .tile p { flex: 1; }
 .service-tiles .tile-arrow { align-self: flex-start; }
+
+/* Service tile icons */
+.tile-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 0.7rem;
+}
+
+.tile-eyebrow .icon-individual,
+.tile-eyebrow .icon-base,
+.tile-eyebrow .icon-groups {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 107, 94, 0.1);
+  border-radius: 50%;
+  color: var(--sage);
+}
+
+.tile-eyebrow .icon-individual {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+  color: var(--cream);
+}
+
+.tile-eyebrow .icon-base {
+  background: linear-gradient(135deg, var(--clay) 0%, var(--clay) 100%);
+  color: var(--cream);
+}
+
+.tile-eyebrow .icon-groups {
+  background: linear-gradient(135deg, var(--sage-deep) 0%, var(--sage) 100%);
+  color: var(--cream);
+}
+
+.tile h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.tile p {
+  font-size: 0.9rem;
+  color: var(--stone);
+  margin: 0;
+  font-weight: 500;
+}
+
+.tile-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: var(--sage);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tile-arrow:hover {
+  color: var(--clay);
+}
+
+.tile:hover .tile-eyebrow {
+  background: rgba(247, 242, 231, 0.5);
+}
+
+.tile:hover h3 {
+  color: var(--sage-deep);
+}
+
+.tile:hover .tile-arrow {
+  color: var(--sage-deep);
+}
 
 /* ====== Pull quote ====== */
 .pullquote {
@@ -910,3 +999,67 @@ main { min-height: 60vh; }
 .subscription-toolbar p { margin: 0; }
 .subscription-toolbar .form-status, .subscription-toolbar [role="status"] { flex-basis: 100%; font-size: 0.9rem; }
 #manage-subscription { scroll-margin-top: 6rem; }
+
+/* ====== Service Tile Icons ====== */
+.tile-eyebrow .icon-individual {
+  --icon-color: var(--cream);
+}
+
+.tile-eyebrow .icon-base {
+  --icon-color: var(--cream);
+}
+
+.tile-eyebrow .icon-groups {
+  --icon-color: var(--cream);
+}
+
+/* Individual icon (dumbbell) */
+.icon-individual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-individual svg {
+  width: 100%;
+  height: 100%;
+  color: var(--icon-color);
+}
+
+/* Base icon (settings/wrench) */
+.icon-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--clay) 0%, var(--clay) 100%);
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-base svg {
+  width: 100%;
+  height: 100%;
+  color: var(--icon-color);
+}
+
+/* Groups icon (users) */
+.icon-groups {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sage-deep) 0%, var(--sage) 100%);
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-groups svg {
+  width: 100%;
+  height: 100%;
+  color: var(--icon-color);
+}
