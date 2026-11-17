@@ -893,6 +893,54 @@ main { min-height: 60vh; }
   text-align: center;
 }
 
+.callout-peak {
+  position: relative;
+  background: linear-gradient(135deg, rgba(74, 107, 94, 0.95) 0%, rgba(31, 29, 24, 0.9) 100%);
+  border: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.callout-peak::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/images/Austria Skyline.JPG');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  transform: scale(1.1);
+}
+
+.callout-peak::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(74, 107, 94, 0.95) 0%, rgba(31, 29, 24, 0.9) 100%);
+  z-index: 1;
+}
+
+.callout-peak > * {
+  position: relative;
+  z-index: 2;
+}
+
+.callout-peak h1 {
+  color: var(--cream);
+  margin-top: 0;
+}
+
+.callout-peak .button {
+  background: var(--cream);
+  color: var(--sage-deep);
+}
+
+.callout-peak .button:hover {
+  background: var(--stone);
+  color: var(--cream);
+}
+
 .callout h2 {
   margin-top: 0;
 }
