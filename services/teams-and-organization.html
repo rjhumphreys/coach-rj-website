@@ -32,7 +32,14 @@
   <main>
     <section class="hero-fullwidth">
       <div class="hero-carousel">
-        <img srcset="/assets/images/hero-banner-sm.coach.jpg 640w, /assets/images/hero-banner.coach.jpg 1920w" sizes="100vw" src="/assets/images/hero-banner.coach.jpg" alt="hero banner coach" class="hero-bg" loading="lazy">
+        <!-- First image (active by default) - Team building -->
+        <img srcset="/assets/images/TeamBuildr.png 1920w" sizes="100vw" src="/assets/images/TeamBuildr.png" alt="Team building exercise" class="hero-bg active" loading="eager">
+        <!-- Second image - Portrait -->
+        <img srcset="/assets/images/rj-portrait.jpg 1920w" sizes="100vw" src="/assets/images/rj-portrait.jpg" alt="Coach RJ with team" class="hero-bg" loading="lazy">
+        <!-- Third image - Rock climbing training -->
+        <img srcset="/assets/images/rock-climber-usecase.jpg 1920w" sizes="100vw" src="/assets/images/rock-climber-usecase.jpg" alt="Rock climbing training" class="hero-bg" loading="lazy">
+        <!-- Fourth image - Coaching session -->
+        <img srcset="/assets/images/Onhill-Coach.JPEG 1920w" sizes="100vw" src="/assets/images/Onhill-Coach.JPEG" alt="Onhill coaching session" class="hero-bg" loading="lazy">
       </div>
       <div class="hero-overlay">
         <div class="hero-content">
@@ -122,5 +129,20 @@
   </footer>
   <script src="/assets/navigation.js"></script>
   <script src="/assets/portal.js"></script>
+  <script>
+    // Simple carousel: rotate .hero-bg.active every 3 seconds with fade transition
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.hero-bg'));
+      if (!slides.length) return;
+      let i = slides.findIndex(s => s.classList.contains('active'));
+      if (i < 0) i = 0, slides[0].classList.add('active');
+
+      setInterval(() => {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+      }, 3000);
+    })();
+  </script>
 </body>
 </html>
