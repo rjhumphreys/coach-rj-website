@@ -28,6 +28,11 @@ img { max-width: 100%; height: auto; display: block; border-radius: var(--radius
 a { color: var(--sage); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 a:hover { color: var(--clay); }
 
+/* Text alignment utilities */
+.text-center {
+  text-align: center;
+}
+
 /* ====== Base ====== */
 html { font-size: 17px; }
 body {
